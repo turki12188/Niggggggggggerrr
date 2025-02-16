@@ -122,7 +122,7 @@ check() {
             echo "${2:-$path}" >> "$shellrc"
             export PATH="$spicetify_install:$PATH"
         else
-            log "spicetify path already set in $shellrc, continuing..."
+            log "SpFTex path already set in $shellrc, continuing..."
         fi
     else
         notfound
@@ -143,11 +143,11 @@ echo
 log "spicetify v$tag was installed successfully to $spicetify_install"
 log "Run 'spicetify --help' to get started"
 
-echo "Do you want to install spicetify Marketplace? (Y/n)"
+echo "Do you want to install SpFTex Marketplace? (Y/n)"
 read -r choice < /dev/tty
 if [ "$choice" = "N" ] || [ "$choice" = "n" ]; then
-    echo "spicetify Marketplace installation aborted"
+    echo "SpFTex Marketplace installation aborted"
     exit 0
 fi
-echo "Starting the spicetify Marketplace installation script.."
+echo "Starting the SpFTex Marketplace installation script.."
 curl -fsSL "https://raw.githubusercontent.com/spicetify/spicetify-marketplace/main/resources/install.sh" | sh
