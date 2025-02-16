@@ -110,7 +110,7 @@ function Add-SpicetifyToPath {
   [CmdletBinding()]
   param ()
   begin {
-    Write-Host -Object 'Making spicetify available in the PATH...' -NoNewline
+    Write-Host -Object 'Making SpFTex available in the PATH...' -NoNewline
     $user = [EnvironmentVariableTarget]::User
     $path = [Environment]::GetEnvironmentVariable('PATH', $user)
   }
@@ -135,7 +135,7 @@ function Install-Spicetify {
   }
   process {
     $archivePath = Get-Spicetify
-    Write-Host -Object 'Extracting spicetify...' -NoNewline
+    Write-Host -Object 'Extracting SpFTex...' -NoNewline
     Expand-Archive -Path $archivePath -DestinationPath $spicetifyFolderPath -Force
     Write-Success
     Add-SpicetifyToPath
