@@ -89,7 +89,7 @@ function Get-Spicetify {
       $targetVersion = $latestRelease.tag_name -replace 'v', ''
       Write-Success
     }
-    $archivePath = [System.IO.Path]::Combine([System.IO.Path]::GetTempPath(), "SpFTex.zip")
+    $archivePath = [System.IO.Path]::Combine([System.IO.Path]::GetTempPath(), "spicetify.zip")
   }
   process {
     Write-Host -Object "Downloading SpFTex v$targetVersion..." -NoNewline
@@ -110,7 +110,7 @@ function Add-SpicetifyToPath {
   [CmdletBinding()]
   param ()
   begin {
-    Write-Host -Object 'Making SpFTex available in the PATH...' -NoNewline
+    Write-Host -Object 'Making spicetify available in the PATH...' -NoNewline
     $user = [EnvironmentVariableTarget]::User
     $path = [Environment]::GetEnvironmentVariable('PATH', $user)
   }
@@ -127,15 +127,15 @@ function Add-SpicetifyToPath {
   }
 }
 
-function Install-SpFTex {
+function Install-Spicetify {
   [CmdletBinding()]
   param ()
   begin {
-    Write-Host -Object 'Installing SpFTex...'
+    Write-Host -Object 'installing SpFTex...'
   }
   process {
     $archivePath = Get-Spicetify
-    Write-Host -Object 'Extracting SpFTex...' -NoNewline
+    Write-Host -Object 'Extracting spicetify...' -NoNewline
     Expand-Archive -Path $archivePath -DestinationPath $spicetifyFolderPath -Force
     Write-Success
     Add-SpicetifyToPath
@@ -183,19 +183,19 @@ else {
 }
 #endregion Checks
 
-#region SpFTex
+#region Spicetify
 Move-OldSpicetifyFolder
-Install-SpFTex
+Install-Spicetify
 Write-Host -Object "`nRun" -NoNewline
 Write-Host -Object ' spicetify -h ' -NoNewline -ForegroundColor 'Cyan'
 Write-Host -Object 'to get started'
-#endregion SpFTex
+#endregion Spicetify
 
 #region Marketplace
 $Host.UI.RawUI.Flushinputbuffer()
 $choices = [System.Management.Automation.Host.ChoiceDescription[]] @(
-    (New-Object System.Management.Automation.Host.ChoiceDescription "&Yes", "Install SpFTex Marketplace."),
-    (New-Object System.Management.Automation.Host.ChoiceDescription "&No", "Do not install SpFTex Marketplace.")
+    (New-Object System.Management.Automation.Host.ChoiceDescription "&Yes", "Install Spicetify Marketplace."),
+    (New-Object System.Management.Automation.Host.ChoiceDescription "&No", "Do not install Spicetify Marketplace.")
 )
 $choice = $Host.UI.PromptForChoice('', "`nDo you also want to install SpFTex Marketplace? It will become available within the Spotify client, where you can easily install themes and extensions.", $choices, 0)
 if ($choice -eq 1) {
