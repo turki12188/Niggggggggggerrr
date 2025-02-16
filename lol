@@ -187,7 +187,7 @@ else {
 Move-OldSpicetifyFolder
 Install-Spicetify
 Write-Host -Object "`nRun" -NoNewline
-Write-Host -Object ' spicetify -h ' -NoNewline -ForegroundColor 'Cyan'
+Write-Host -Object ' SpFTex -h ' -NoNewline -ForegroundColor 'Cyan'
 Write-Host -Object 'to get started'
 #endregion Spicetify
 
